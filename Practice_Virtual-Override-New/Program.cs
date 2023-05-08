@@ -14,7 +14,9 @@
             sa.Deposit(500);
             Console.WriteLine(ca.ToString());
             Console.WriteLine(sa.ToString());
-
+            RetirementAccount ra = new RetirementAccount("Retiree", 10000, .08);
+            ra.Withdraw(500);
+            Console.WriteLine(ra.ToString());
         } // Main
     } // class
 } // namespace
