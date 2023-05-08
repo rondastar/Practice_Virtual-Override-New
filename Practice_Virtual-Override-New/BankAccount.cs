@@ -22,8 +22,37 @@ namespace Practice_Virtual_Override_New
         }
         public string Name { get => _name; set => _name = value; }
         public string AccountNumber { get => _accountNumber; }
-        public double Balance { get => _balance; }
+        public double Balance { get => _balance; protected set => _balance = value; }
 
+        public virtual bool Deposit(double amount)
+        {
+            if(amount >= 0)
+            {
+                Balance += amount;
+                return true;
+            }
+            else
+            {
+                return false;
+            }
+        }
 
+        public virtual bool Withdraw(double amount)
+        {
+            if (amount >= 0 && _balance >= amount)
+            {
+                Balance -= amount;
+                return true;
+            }
+            else
+            {
+                return false;
+            }
+        }
+
+        public override string ToString()
+        {
+            return $"{this.GetType()} - {Name} - {AccountNumber} - Balance: ${Balance}";
+        }
     } // class
 } // namespace

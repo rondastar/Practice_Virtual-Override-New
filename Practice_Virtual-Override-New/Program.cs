@@ -7,8 +7,14 @@
     {
         static void Main(string[] args)
         {
-            BankAccount ba = new BankAccount("Ronda", 6.54);
-            Console.WriteLine($"{ba.AccountNumber}");
+            CheckingAccount ca = new CheckingAccount("Ronda", 6.54, 50);
+            ca.Deposit(500);
+            ca.Withdraw(1000);
+            SavingsAccount sa = new SavingsAccount("Saver", 1000.50, .03);
+            sa.Deposit(500);
+            Console.WriteLine(ca.ToString());
+            Console.WriteLine(sa.ToString());
+
         } // Main
     } // class
 } // namespace
