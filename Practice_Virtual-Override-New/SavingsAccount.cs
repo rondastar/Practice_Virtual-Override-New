@@ -20,6 +20,7 @@ namespace Practice_Virtual_Override_New
         public override bool Deposit(double amount)
         {
             bool depositedAmount = base.Deposit(amount);
+            // Adds interest if deposit was successful
             if (depositedAmount)
             {
                 Balance += (amount * _interest);

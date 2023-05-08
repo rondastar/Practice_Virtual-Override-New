@@ -20,6 +20,7 @@ namespace Practice_Virtual_Override_New
         public override bool Withdraw(double amount)
         {
             bool withdrewAmount = base.Withdraw(amount);
+            // Applies overdraft fee if withdrawal was attempted with insufficient funds
             if (!withdrewAmount)
             {
                 Balance -= _overdraftFee;
