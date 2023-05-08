@@ -7,7 +7,8 @@
     {
         static void Main(string[] args)
         {
-            Console.WriteLine("Hello, World!");
-        }
-    }
-}
+            BankAccount ba = new BankAccount("Ronda", 6.54);
+            Console.WriteLine($"{ba.AccountNumber}");
+        } // Main
+    } // class
+} // namespace

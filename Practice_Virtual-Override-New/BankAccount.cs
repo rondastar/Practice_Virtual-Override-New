@@ -11,18 +11,19 @@ namespace Practice_Virtual_Override_New
     {
         string _name;
         string _accountNumber;
-        decimal _balance;
+        double _balance;
 
-        public BankAccount(string name, decimal balance)
+        public BankAccount(string name, double balance)
         {
-            Random rand = new Random(100000000);
+            Random rand = new Random();
+            _accountNumber = rand.Next(100000000, 1000000000).ToString();
             _name = name;
-            _accountNumber = rand.ToString();
             _balance = balance;
         }
-
         public string Name { get => _name; set => _name = value; }
         public string AccountNumber { get => _accountNumber; }
-        public decimal Balance { get => _balance; }
-    }
-}
+        public double Balance { get => _balance; }
+
+
+    } // class
+} // namespace
