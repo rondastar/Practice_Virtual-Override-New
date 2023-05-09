@@ -7,7 +7,7 @@ using System.Xml.Linq;
 
 namespace Practice_Virtual_Override_New
 {
-    internal class BankAccount
+    abstract internal class BankAccount
     {
         string _name;
         string _accountNumber;
@@ -24,31 +24,9 @@ namespace Practice_Virtual_Override_New
         public string AccountNumber { get => _accountNumber; }
         public double Balance { get => _balance; protected set => _balance = value; }
 
-        public virtual bool Deposit(double amount)
-        {
-            if(amount >= 0)
-            {
-                Balance += amount;
-                return true;
-            }
-            else
-            {
-                return false;
-            }
-        }
+        public abstract bool Deposit(double amount);
 
-        public virtual bool Withdraw(double amount)
-        {
-            if (amount >= 0 && _balance >= amount)
-            {
-                Balance -= amount;
-                return true;
-            }
-            else
-            {
-                return false;
-            }
-        }
+        public abstract bool Withdraw(double amount);
 
         public override string ToString()
         {

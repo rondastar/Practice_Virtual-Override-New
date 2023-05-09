@@ -17,15 +17,32 @@ namespace Practice_Virtual_Override_New
 
         public double OverdraftFee { get => _overdraftFee; set => _overdraftFee = value; }
 
+        public override bool Deposit(double amount)
+        {
+            if (amount >= 0)
+            {
+                Balance += amount;
+                return true;
+            }
+            else
+            {
+                return false;
+            }
+        }
+
         public override bool Withdraw(double amount)
         {
-            bool withdrewAmount = base.Withdraw(amount);
-            // Applies overdraft fee if withdrawal was attempted with insufficient funds
-            if (!withdrewAmount)
+            if (amount >= 0 && Balance >= amount)
             {
-                Balance -= _overdraftFee;
+                Balance -= amount;
+                return true;
             }
-            return withdrewAmount;
+            else
+            {
+                // Applies overdraft fee if  if withdrawal was attempted with insufficient funds or invalid amount was entered
+                Balance -= _overdraftFee;
+                return false;
+            }
         }
         public override string ToString()
         {

@@ -19,13 +19,29 @@ namespace Practice_Virtual_Override_New
 
         public override bool Deposit(double amount)
         {
-            bool depositedAmount = base.Deposit(amount);
-            // Adds interest if deposit was successful
-            if (depositedAmount)
+            // deposits and adds interest if valid amount
+            if (amount >= 0)
             {
-                Balance += (amount * _interest);
+                Balance += amount + (amount * _interest);
+                return true;
             }
-            return depositedAmount;
+            else
+            {
+                return false;
+            }
+        }
+
+        public override bool Withdraw(double amount)
+        {
+            if (amount >= 0 && Balance >= amount)
+            {
+                Balance -= amount;
+                return true;
+            }
+            else
+            {
+                return false;
+            }
         }
         public override string ToString()
         {
